@@ -13,8 +13,8 @@ class LightBarClient:
         self.display_segment(segment)
 
     def display_segment(self,segment):
-        with open(self.path,'w') as file:
-            file.write(self.get_display_segment_string(segment))
+        with open(self.path,'w') as f:
+            f.write(self.get_display_segment_string(segment))
 
     def get_display_segment_string(self,segment):
         self._check_segment(segment)

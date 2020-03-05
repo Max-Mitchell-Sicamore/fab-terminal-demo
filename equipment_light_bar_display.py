@@ -12,11 +12,11 @@ class EquipmentLightBarDisplay:
         "Ready to Use" : [GREEN,"solid"],
         "Do Not Use" : [RED,"solid"],
         "In Service" : [BLUE,"solid"],
-        "Temporarily Removed" : [PURPLE,"soild"],
+        "Temporarily Removed" : [PURPLE,"solid"],
         "Record Approved" : [GREEN,"solid"],
-        "Record Created" : [BLUE,"soild"],
-        "Returned to Customer" : [PURPLE,"soild"],
-        "Permanently Removed" : [ORANGE,"soild"]
+        "Record Created" : [BLUE,"solid"],
+        "Returned to Customer" : [PURPLE,"solid"],
+        "Permanently Removed" : [ORANGE,"solid"]
 
     }
 

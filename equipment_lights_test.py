@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 from equipment_light_bar_display import EquipmentLightBarDisplay
 import time
 

@@ -3,21 +3,26 @@ from light_bar_client import LightBarClient
 
 
 class EquipmentLightBarDisplay:
-    GREEN = 0,255,0
-    BLUE = 0,0,255
+    GREEN = 0,0,255
+    BLUE = 0,255,0
     RED = 255,0,0
-    PURPLE =  180,30,160
-    GET_REQUESTER = requester.GetRequester(False)
+    PURPLE =  180,160,30
+    ORANGE = 255,0, 165 
     STATUS_LIGHTS = {
         "Ready to Use" : [GREEN,"solid"],
         "Do Not Use" : [RED,"solid"],
         "In Service" : [BLUE,"solid"],
         "Temporarily Removed" : [PURPLE,"soild"],
-        "Record Approved" : [GREEN,"solid"]
+        "Record Approved" : [GREEN,"solid"],
+        "Record Created" : [BLUE,"soild"],
+        "Returned to Customer" : [PURPLE,"soild"],
+        "Permanently Removed" : [ORANGE,"soild"]
+
     }
 
-    def __init__(self,size):
+    def __init__(self,size,production=False):
         self.light_bar = LightBarClient(size,)
+        self.GET_REQUESTER = requester.GetRequester(production)
 
     def display_equip_status(self,segment,equip_numb):
         return self.light_bar.set_and_display_segment(

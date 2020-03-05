@@ -5,15 +5,17 @@ class LightBarClient:
         self.segments = list(
             map(lambda x:LightBarSegement() ,([None]*size))
         )
-        self.path = path
+        self.file = open(path,'w',1)
+
+    def __del__(self):
+        self.file.close()
 
     def set_and_display_segment(self,segment,color,mode):
         self.set_segment(segment,color,mode)
         self.display_segment(segment)
 
     def display_segment(self,segment):
-        with open(self.path,"w") as f:
-            f.write(self.get_display_segment_string(segment))
+        self.file.write(self.get_display_segment_string(segment))
 
     def get_display_segment_string(self,segment):
         self._check_segment(segment)

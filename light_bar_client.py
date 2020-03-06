@@ -9,8 +9,10 @@ class LightBarClient:
         self.path = path
 
     def set_and_display_segment(self,segment,color,mode):
+        prevous_segment = self.segments[segment]
         self.set_segment(segment,color,mode)
-        self.display_segment(segment)
+        if str(prevous_segment) != str(segment.segment[segment]):
+            self.display_segment(segment)
 
     def display_segment(self,segment):
         with open(self.path,'w') as f:

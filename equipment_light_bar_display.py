@@ -25,7 +25,7 @@ class EquipmentLightBarDisplay:
         self.GET_REQUESTER = requester.GetRequester(production)
 
     def display_equip_status(self,segment,equip_numb):
-        return self.light_bar.set_and_display_segment(
+        self.light_bar.set_and_display_segment(
             segment,
             *self.STATUS_LIGHTS[self._get_equip_status(equip_numb)]
         )

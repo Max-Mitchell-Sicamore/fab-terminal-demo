@@ -7,11 +7,12 @@ class LightBarClient:
             map(lambda x:LightBarSegement() ,([None]*size))
         )
         self.path = path
+        self.past_segments = []
 
     def set_and_display_segment(self,segment,color,mode):
         prevous_segment = self.segments[segment]
         self.set_segment(segment,color,mode)
-        if str(prevous_segment) != str(segment.segment[segment]):
+        if str(prevous_segment) != str(self.segments[segment]):
             self.display_segment(segment)
 
     def display_segment(self,segment):

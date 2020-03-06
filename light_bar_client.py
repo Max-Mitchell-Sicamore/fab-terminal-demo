@@ -2,7 +2,7 @@ import re
 
 class LightBarClient:
 
-    def __init__(self,size,path="/tmp/pipe_sicamore_lightbar"):
+    def __init__(self,size,path):
         self.segments = list(
             map(lambda x:LightBarSegement() ,([None]*size))
         )
@@ -10,9 +10,9 @@ class LightBarClient:
         self.past_segments = []
 
     def set_and_display_segment(self,segment,color,mode):
-        prevous_segment = self.segments[segment]
+        prevous_state = self.get_display_segment_string(segment)
         self.set_segment(segment,color,mode)
-        if str(prevous_segment) != str(self.segments[segment]):
+        if prevous_state != self.get_display_segment_string(segment):
             self.display_segment(segment)
 
     def display_segment(self,segment):

@@ -3,6 +3,7 @@ from light_bar_client import LightBarClient
 
 
 class EquipmentLightBarDisplay:
+    PATH = "/tmp/pipe_sicamore_lightbar"
     GREEN = 0,0,255
     BLUE = 0,255,0
     RED = 255,0,0
@@ -21,7 +22,7 @@ class EquipmentLightBarDisplay:
     }
 
     def __init__(self,size,production=False):
-        self.light_bar = LightBarClient(size,)
+        self.light_bar = LightBarClient(size,self.PATH)
         self.GET_REQUESTER = requester.GetRequester(production)
 
     def display_equip_status(self,segment,equip_numb):

@@ -1,4 +1,4 @@
-import re
+import re, copy
 
 class LightBarClient:
 
@@ -10,11 +10,11 @@ class LightBarClient:
         self.past_segments = []
 
     def set_and_display_segment(self,segment,color,mode):
-        prevous_state = self.get_display_segment_string(segment)
+        prevous_state = copy.copy(self.segments[segment])
         self.set_segment(segment,color,mode)
-        if prevous_state != self.get_display_segment_string(segment):
+        if prevous_state != self.segments[segment]:
             self.display_segment(segment)
-
+            
     def display_segment(self,segment):
         with open(self.path,'w') as f:
             f.write(self.get_display_segment_string(segment))
@@ -66,6 +66,12 @@ class LightBarSegement:
         return "{}:{}".format(
             "".join(re.findall(r"[^()\s]+",str(self.color)))
             ,self.mode)
+
+    def __eq__(self,other):
+        return self.color == other.color and self.mode == other.mode
+
+    def __ne__(self,other):
+        return not self.__eq__(other)
 
     def set_mode(self,mode):
         self._check_mode(mode)

@@ -22,7 +22,7 @@ class EquipmentLightBarDisplay:
     }
 
     def __init__(self,size,production=False):
-        self.light_bar = LightBarClient(size,self.PATH)
+        self.light_bar = LightBarClient(size,"fake.txt")
         self.GET_REQUESTER = requester.GetRequester(production)
 
     def display_equip_status(self,segment,equip_numb):
